@@ -1,0 +1,36 @@
+@model ProductFlowIntegration.Models.ProductFlowModel
+@{
+    ViewData["Title"] = "Product Flow Integration";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h4 mb-0">Product Flow Integration</h2>
+                </div>
+                <div class="card-body p-4">
+                    <p>Below is a sample product. Configure the product code and name in the <b>appsettings.json</b> file</p>
+                    <p>@Model.ProductName</p>
+                    @if (Model.PopupOnly ?? false)
+                    {
+                        <script>
+                            window.addEventListener('DOMContentLoaded', function () {
+                                const productFlowUrl = '@Url.Action("ProductView", "ProductFlow")?productFlowInstanceId=@Model.ProductFlowInstanceId';
+                                window.open(productFlowUrl, 'ProductFlow', 'width=800,height=600,resizable=yes,scrollbars=yes');
+                            });
+                        </script>
+                    }
+                    else
+                    {
+                        <div class="product-flow-container">
+                            <ls-productflow-isolated productflowid="@Model.ProductFlowInstanceId" apikey="@Model.ApiKey" authtoken="@Model.AuthToken"></ls-productflow-isolated>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://test.cdn.toolkit.lightstone.co.za/ls-productmanagement/v1/scripts/ls-productflow-isolated.js"></script>

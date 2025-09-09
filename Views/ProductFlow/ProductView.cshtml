@@ -1,0 +1,26 @@
+@{
+    Layout = null;
+    var productFlowId = Context.Request.Query["productFlowInstanceId"].ToString();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Flow Viewer</title>
+    <script src="https://cdn.toolkit.lightstone.co.za/ls-productmanagement/v1/scripts/ls-productflow-isolated.js"></script>
+</head>
+<body>
+    <div style="margin: 20px;">
+        <h2>Product Flow</h2>
+
+        @if (!string.IsNullOrEmpty(productFlowId))
+        {
+            <ls-productflow-isolated productflowid="@productFlowId"></ls-productflow-isolated>
+        }
+        else
+        {
+            <p>Error: No product flow ID provided.</p>
+        }
+    </div>
+</body>
+</html>

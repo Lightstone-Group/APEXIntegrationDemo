@@ -1,0 +1,56 @@
+@model ProductFlowIntegration.Models.UserOnboardingResult
+@{
+    ViewData["Title"] = "Onboarding Result";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header @(Model.Success ? "bg-success" : "bg-danger") text-white">
+                    <h2 class="h4 mb-0">
+                        @if (Model.Success)
+                        {
+                            @Html.Raw("<span class=\"me-2\">&#10003;</span>Success")
+                        }
+                        else
+                        {
+                            @Html.Raw("<span class=\"me-2\">&#9888;</span>Error")
+                        }
+                    </h2>
+                </div>
+                <div class="card-body p-4">
+                    @if (Model.Success)
+                    {
+                        <div class="alert alert-success" role="alert">
+                            <h5 class="alert-heading">User Successfully Onboarded!</h5>
+                            <p class="mb-2">@Model.Message</p>
+                            @if (!string.IsNullOrEmpty(Model.PartyId))
+                            {
+                                <hr>
+                                <p class="mb-0"><strong>Party ID:</strong> <code>@Model.PartyId</code></p>
+                            }
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Index" class="btn btn-primary me-md-2">Onboard Another User</a>
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back to Home</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            <h5 class="alert-heading">Onboarding Failed</h5>
+                            <p class="mb-0">@Model.Message</p>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Index" class="btn btn-primary me-md-2">Try Again</a>
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back to Home</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

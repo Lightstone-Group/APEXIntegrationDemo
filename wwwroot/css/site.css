@@ -1,0 +1,59 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* Sleek Navigation Hover Effects */
+.navbar-nav .nav-link {
+    position: relative;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    margin: 0 2px;
+}
+
+.navbar-nav .nav-link:hover {
+    background: linear-gradient(135deg, rgba(37, 140, 251, 0.1) 0%, rgba(37, 140, 251, 0.05) 100%);
+    color: #0056b3 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(37, 140, 251, 0.15);
+}
+
+.navbar-nav .nav-link:active {
+    transform: translateY(0);
+}
+
+/* Special styling for Documentation link */
+.navbar-nav .nav-link[href*="docs"] {
+    color: #6c757d !important;
+    border: 1px solid rgba(108, 117, 125, 0.2);
+}
+
+.navbar-nav .nav-link[href*="docs"]:hover {
+    background: linear-gradient(135deg, rgba(108, 117, 125, 0.1) 0%, rgba(108, 117, 125, 0.05) 100%);
+    color: #495057 !important;
+    border-color: rgba(108, 117, 125, 0.4);
+}
+
+/* Active/Current page styling */
+.navbar-nav .nav-link.active {
+    background: linear-gradient(135deg, #258cfb 0%, #1976d2 100%)
